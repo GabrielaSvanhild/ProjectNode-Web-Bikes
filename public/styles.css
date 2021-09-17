@@ -1,0 +1,248 @@
+html * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #1d1b1b;
+    color: white;
+}
+header{
+    background-color:black;
+    color: white;
+    width: 100%;
+    height: 14vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+}
+nav{
+    width: 50%; 
+   /*  background-color: teal; */
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+}
+nav a{
+    text-decoration: none;
+    color: white;
+   /*  color: #6d6b46; */
+    font-weight: 700;
+    transition: 500ms;
+}
+a:hover{
+    color:#6d6b46; 
+}
+.active{
+    color:#6d6b46 
+}
+.logo{
+    width: 5.8vw;
+    align-self: center;
+}
+
+.hero{
+    width: 100%;
+    height: 86vh;
+    background-image: url("/assets/fotoPortada.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.hero-submit{
+    width: 100%;
+    height: 86vh;
+    background-image: url("/assets/submit.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.backgroundSign{
+    padding: 0;
+    width: 100%;
+    height: 86vh;
+    background-image: url("/assets/signIn.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* MAIN */
+main{
+    padding: 1rem;
+    min-height: 100vh;
+}
+main h2{
+    font-size: 7vmin;
+    text-align: center;
+    color: #6d6b46;
+}
+article{
+    margin-top: 1rem;
+}
+.container-moto{
+    margin:0 auto;
+    display: flex;
+    width: 90%;
+    margin-top:3rem;
+}
+.imgMoto{
+    width:25vw;
+}
+.container-text h3{
+    font-size: 5vmin;
+}
+.container-tittle-heart{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.container-tittle-heart img{
+    width: 2.5vw;
+    align-self: center;
+}
+.container-text{
+display: flex;
+flex-direction: column;
+height: 100%;
+justify-content: space-between;
+}
+
+.comments-logo{
+    display: flex;
+    justify-content: center;
+    gap:0.5rem;
+}
+.comments-logo img{
+    width: 2vw;  
+}
+.container-text{
+    padding: 0 0.5rem
+}
+/* SUBMIT */
+form input, .container-data-2 select{
+    height: 2.5rem;
+}
+form{
+    display: flex;
+    flex-direction: column;   
+    gap:1rem;
+    padding: 1rem 0;
+
+}
+.input-description{
+    height: 9rem;
+
+}
+/* textarea {
+    resize: none;
+    width: 28%;
+    height: 7rem;
+} */
+.container-text-submit{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    padding: 1rem 0;
+}
+.container-text-submit span{
+    font-weight: 700;
+    color: bisque;
+}
+.container-title-input{
+ display: flex;
+ flex-direction: column;
+ width: 48%;
+}
+.container-data-1{
+    display: flex;
+    gap:1rem;
+ 
+}
+.container-data-1 input,.container-data-2 input, .container-data-3 input, .container-data-3 textarea  {
+ width: 100%;
+}
+
+.container-data-2, .container-data-3{
+display: flex;
+gap: 1rem;
+}
+
+.boton{
+    width: 10vw;
+    justify-content: center;
+    align-items: center;
+    margin-top:1rem;
+}
+/* Sign IN */
+
+.container-sign{
+    width: 100%;
+    height: 100%;
+    background-color: #1312123c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    min-height: 45%;
+    background-color: #1d1b1bc4;
+    margin: auto auto;
+}
+.box-form form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.inputSign{
+    height: 3rem;
+    width: 50%;
+}
+.boton-submit{
+    height: 3rem;
+    width: 30%;
+    border: none;
+    background-color: #466d57;
+    color:white
+}
+/*FOOTER*/
+
+footer{
+    margin-top: 3rem;
+    background-color:black;
+    width: 100%;
+    color: white;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+}
+.container-menu, .container-social-media, .container-categories{
+    width:20%;
+}
+.iconos{
+    
+    color: #ffffff;
+    width: 5vmin;
+    height: 4vmin;
+    cursor: pointer
+}
+.footer2{
+    margin-top: 0rem;
+
+}
+

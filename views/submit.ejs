@@ -1,0 +1,57 @@
+<!-- EJS SIGNIFICA EMMBEBED JAVA SCRIPT -->
+<%- include('partials/head.ejs') %> <!-- ACA VA EL CODIGO JAVA SCRIPT si hubiese puesto la barra /partials, la busca en la raiz en el disco "c" -->
+<body>
+    <%- include('partials/header.ejs') %>
+    <div class="hero-submit">
+
+        </div>
+    <main>
+        <h2>Submit a Bike</h2>
+        <article>
+            <div class="container-text-submit">
+                <p>Whether you’re a famous builder or an anonymous garage maestro, <span> if you have a bike that you think is worthy of a Pipeburn story then we want to see it. </span>  Maybe you’re just after some peer feedback, or you might even be looking for a bit of publicity to see if you can make a living out of it. Whatever the case, a bike featured on Pipeburn will be exposed to 300,000 unique site visitors a month and posted to 400,000 Facebook followers. And then there’s 220k + Instagram followers, Pinterest, Twitter and our RSS feed, too.</p>
+                <p><span> Remember – the better the photos of your bike, the better your chances of getting featured.</span>R You could have the skills to be the next Max Hazan, but if your photos aren’t up to scratch chances are we will ask you to reshoot. We always recommend that builders hire a pro photographer and we are happy to give photographic advice. If you’re unsure how to get the pictures to us, read this and then share a link to the files in the form field below.</p>
+                <p><span>RAnd please note that we usually won’t post bikes that have already been shown on other sites.</span>R We pride ourselves on featuring only the latest and greatest bike builds, so if we’ve already seen your handwork somewhere else we will most likely say a polite ‘no thanks’.</p>
+            </div>
+            <hr>
+            <form action="/submitBike/<%=userId%>" method="POST">
+                    <div class="container-data-1">
+                            <div class="container-title-input"> 
+                                <label for="name">Your Name</label>
+                                <input  type="text" id="name" name="name" required  value="<%= edit ? edit.name : null%>"/>
+                            </div>
+                            <div class="container-title-input">
+                                <label for="email">Email</label>
+                                <input  type="email" id="email" name="email" required value="<%= edit ? edit.email : null%>"/>
+                            </div>                     
+                    </div>
+                    <div class="container-data-2">
+                            <div class="container-title-input">
+                                <label for="modelOfBike">Type / Model of Bike </label>
+                                <input  type="text" id="modelOfBike" name="modelOfBike" required value="<%= edit ? edit.modelOfBike : null%>"/>
+                            </div>
+                            <div class="container-title-input">
+                                    <label for="urlBike">Image</label>
+                                    <input type="text" id="urlBike" name="urlBike" placeholder="Url" required value="<%= edit ? edit.urlBike : null%>" />                      
+                            </div>                                                   
+                    </div>
+                    <div class="container-data-3">
+                            <div class="container-title-input">
+                                    <label for="title">Title</label>
+                                    <input type="text" id="title" name="title" placeholder="Title" value="<%= edit ? edit.title : null%>"  required/>                      
+                            </div> 
+                        <div class="container-title-input">
+                            <p>Bike Description </p>
+                            <textarea id="text-area" name="description" rows="10" cols="50" placeholder="Write a description" required > <%= edit ? edit.description : null%> </textarea>
+                        </div>
+                    </div>
+                    <input type="hidden" name="_id" value="<%=edit ? edit._id  : null%>">
+                    <input class="boton" type="submit" value="Submit" />
+            </form>
+            
+        </article>
+    </main>
+    <%- include('partials/footer.ejs') %> 
+ <!--    <script src="https://kit.fontawesome.com/f119dc4da4.js" crossorigin="anonymous"></script> -->
+</body>
+</html>

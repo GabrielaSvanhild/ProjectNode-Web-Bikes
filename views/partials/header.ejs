@@ -1,0 +1,17 @@
+<header>
+    <img class="logo" src="/assets/logo.png" alt="">
+    <nav>
+        <a class="<%= title.includes("Home") && "active" %>" href="/">Home</a>
+        <% if(!loggedIn){ %>
+            
+            <a  class="<%= title.includes("In") && "active" %>" href="/signIn"> Sign In</a>
+        <a  class="<%= title.includes("Up") && "active"%>"  href="/signUp"> Sign Up</a>
+        <% } else{%> 
+        
+            <a  href="/logOut">Log Out</a>
+            <a  class=" <%= title.includes("Bike") && "active"%>" href="/submitBike/<%=userId%>">Submit a Bike</a>
+       <%}%>
+        
+    </nav>
+</header>
+

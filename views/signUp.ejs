@@ -1,0 +1,23 @@
+<%- include('partials/head.ejs') %>
+<body>
+        <%- include('partials/header.ejs')  %>
+        <div class="heroSignUp"></div>
+        <main class="backgroundSign">
+            <div class="container-sign">
+                <div class="box-form">
+                    <h3>Sign Up</h3>
+                    <form action="/signUp" method="POST">
+                        <input class="inputSign" type="text" name="name" placeholder="Name"/>
+                        <input  class="inputSign" type="text" name="email" placeholder="E-mail"/>
+                        <input  class="inputSign" type="password" name="password" placeholder="Password"/>
+                         <input class="boton-submit" type="Submit" value="Send"/> 
+                    </form>
+                    <% if (error) { %>
+                        <h3 style="color: red;"><%= error %></h3>
+                    <% } %>   
+                </div>
+                
+            </div>              
+        </main>
+        <%- include('partials/footer.ejs') %> 
+</body>
