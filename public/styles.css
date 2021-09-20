@@ -125,6 +125,27 @@ justify-content: space-between;
 .container-text{
     padding: 0 0.5rem
 }
+.boton_edit, .boton_delete{
+    cursor: pointer;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border: none;
+  transition: 1s all
+}
+.boton_edit:hover{
+    transition: 1s all;
+    transform: scale(1.1);
+}
+.boton_delete:hover{
+    transition: 1s all;
+    transform: scale(1.1);
+}
+.boton_edit{
+    background-color: #466d57    
+}
+.boton_delete{
+    background-color: rgb(116, 19, 19)
+}
 /* SUBMIT */
 form input, .container-data-2 select{
     height: 2.5rem;
@@ -227,8 +248,15 @@ gap: 1rem;
     border: none;
     /* background-color: #105b30; */
     background-color: #466d57;
-    color:white
+    color:white;
+    transition: 0.5s all;
 }
+.boton-submit:hover{
+    transition: 0.5s all;
+    transform: scale(1.1);
+
+}
+
 /*FOOTER*/
 
 footer{
