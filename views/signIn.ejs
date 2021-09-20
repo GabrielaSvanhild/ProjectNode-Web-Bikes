@@ -7,9 +7,9 @@
                  <div class="box-form">
                     <h3>Sign In</h3>  
                     <form action="/signIn" method="POST">
-                        <input class="inputSign" type="text" name="email" placeholder="E-mail"/>
-                        <input class="inputSign" type="password" name="password" placeholder="Password"/> 
-                        <input class="boton-submit" type="Submit" value="Send"/> 
+                        <input class="inputSign" type="text" name="email" placeholder="E-mail" required/>
+                        <input class="inputSign" type="password" name="password" placeholder="Password" required/> 
+                        <input class="boton-submit" type="Submit" value="Send" /> 
                     </form>  
                     <% if (error) { %>
                         <h3 style="color: red;"><%= error %></h3>

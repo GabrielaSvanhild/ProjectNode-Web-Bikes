@@ -6,7 +6,7 @@
     <div class="hero">
 
         </div>
-    <main>
+    <main>  
         <article>
                 <% let bikes_cafeRacer=bikes.filter(bike=>bike.modelOfBike==="cafe_racer")%>
             <h2>Cafe Racer</h2>
@@ -18,13 +18,19 @@
                             <div class="container-text">
                                 <div class="container-tittle-heart">
                                     <h3><%=bike.title%></h3>
-                                    <%if(userId){%>
-                                        <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
-                                            <img src=<%=heart1%> alt="heart"/>
-                                        </a>
-                                    <%}else{%>
-                                        <img src="/assets/corazon_sin_relleno.png" alt="likear">
-                                    <%}%>                                           
+                                    <div class="container-like">
+                                        <%if(userId){%>
+                                            <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
+                                                <img src=<%=heart1%> alt="heart"/>
+                                            </a>
+                                            
+                                        <%}else{%>
+                                            <img onclick="alert2()"  src="/assets/corazon_sin_relleno.png" alt="likear">
+                                        <%}%>   
+                                        <p><%=bike.likes.length%></p> 
+
+                                    </div>
+                                                                           
                                 </div>
                                 <p><%=bike.description%> </p>
                                 <div class="comments-logo">
@@ -51,13 +57,18 @@
                                 <div class="container-text">
                                     <div class="container-tittle-heart">
                                         <h3><%=bike.title%></h3>
-                                        <%if(userId){%>
-                                            <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
-                                                <img src=<%=heart2%> alt="heart"/>
-                                            </a>
-                                        <%}else{%>
-                                            <img src="/assets/corazon_sin_relleno.png" alt="likear">
-                                        <%}%>                                           
+                                        <div class="container-like">
+                                            <%if(userId){%>
+                                                <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
+                                                    <img src=<%=heart2%> alt="heart"/>   
+                                                </a>
+                                            <%}else{%>
+                                                <img onclick="alert2()" src="/assets/corazon_sin_relleno.png" alt="likear">
+                                            <%}%>  
+                                            <p><%=bike.likes.length%></p>  
+
+                                        </div>
+                                                                               
                                     </div>
                                     <p><%=bike.description%> </p>
                                     <div class="comments-logo">
@@ -85,13 +96,18 @@
                         <div class="container-text">
                             <div class="container-tittle-heart">
                                 <h3><%=bike.title%></h3>
-                                <%if(userId){%>
-                                    <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
-                                        <img src=<%=heart3%> alt="heart"/>
-                                    </a>
-                                <%}else{%>
-                                    <img src="/assets/corazon_sin_relleno.png" alt="likear">
-                                <%}%>                                   
+                                <div class="container-like">
+                                        <%if(userId){%>
+                                            <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
+                                                <img src=<%=heart3%> alt="heart"/>
+                                            </a>                     
+                                        <%}else{%>
+                                            <img onclick="alert2()" src="/assets/corazon_sin_relleno.png" alt="likear">
+                                        <%}%>  
+                                        <p><%=bike.likes.length%></p>  
+
+                                </div>
+                                                               
                             </div>
                             <p><%=bike.description%> </p>
                             <div class="comments-logo">
@@ -110,10 +126,17 @@
       
 
     </main>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script defer>
+        function alert2(){
+            alertify.error("You have to log in")
+           
+        }      
+
+    </script>
     <%- include('partials/footer.ejs') %>
     
-</body>
-</html>
+
 
 
 
