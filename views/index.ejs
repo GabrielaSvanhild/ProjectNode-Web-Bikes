@@ -10,32 +10,35 @@
         <article>
                 <% let bikes_cafeRacer=bikes.filter(bike=>bike.modelOfBike==="cafe_racer")%>
             <h2>Cafe Racer</h2>
-           <%if(bikes_cafeRacer.length>0){%>
+            <%if(bikes_cafeRacer.length>0){%>
                 <%bikes_cafeRacer.forEach(bike=>{%>
                     <%let heart1= bike.likes.includes(userId) ? "/assets/heart1.png" : "/assets/corazon_sin_relleno.png"%>
                     <div class="container-moto">
-                        <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
-                        <div class="container-text">
-                            <div class="container-tittle-heart">
-                                <h3><%=bike.title%></h3>
-                                <%if(userId){%>
-                                    <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
-                                        <img src=<%=heart1%> alt="heart"/>
-                                    </a>
-                                <%}else{%>
-                                    <img src="/assets/corazon_sin_relleno.png" alt="likear">
-                                <%}%>                                       
+                            <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
+                            <div class="container-text">
+                                <div class="container-tittle-heart">
+                                    <h3><%=bike.title%></h3>
+                                    <%if(userId){%>
+                                        <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
+                                            <img src=<%=heart1%> alt="heart"/>
+                                        </a>
+                                    <%}else{%>
+                                        <img src="/assets/corazon_sin_relleno.png" alt="likear">
+                                    <%}%>                                           
+                                </div>
+                                <p><%=bike.description%> </p>
+                                <div class="comments-logo">
+    
+                                    <%if(userId && userId.toString()===bike.userId.toString()){%>
+                                   <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
+                                   <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
+                                   <%}%>
+                                </div>                   
                             </div>
-                            <p><%=bike.description%> </p>
-                            <div class="comments-logo">   
-                                <%if(userId && userId.toString()===bike.userId.toString()){%>
-                                    <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
-                                    <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
-                                <%}%>
-                        </div>                   
-                    </div>
+                        </div>
                 <%})%>
             <%}%>
+          
         </article>
         <article>
             <% let bikes_choppers=bikes.filter(bike=>bike.modelOfBike==="choppers")%>
@@ -54,9 +57,7 @@
                                             </a>
                                         <%}else{%>
                                             <img src="/assets/corazon_sin_relleno.png" alt="likear">
-                                        <%}%>    
-                                     
-                                       
+                                        <%}%>                                           
                                     </div>
                                     <p><%=bike.description%> </p>
                                     <div class="comments-logo">
@@ -68,11 +69,8 @@
                                     </div>                   
                                 </div>
                             </div>
-
                     <%})%>
-
                 <%}%>
-
         </article>
             
         
