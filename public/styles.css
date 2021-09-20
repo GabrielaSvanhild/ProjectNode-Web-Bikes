@@ -87,7 +87,9 @@ main h2{
 article{
     margin-top: 1rem;
 }
-
+.container-like img{
+    cursor:pointer;
+}
 .container-moto{
     margin:0 auto;
     display: flex;
