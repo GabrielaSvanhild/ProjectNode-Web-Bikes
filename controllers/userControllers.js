@@ -23,8 +23,8 @@ const userControllers = {
         .catch(error=>{
             res.render('signUp', {
                 loggedIn:false, 
-                title: 'Sign In',
-                error:'The e-mail already exist'
+                title: 'Sign Up',
+                error:"The email is already in use"
             })
         })
         /* const {name, email, password} = req.body
@@ -46,6 +46,7 @@ const userControllers = {
                     req.session.loggedIn = true
                     req.session.name = user.name
                     req.session.userId=user._id
+                    console.log("linea 49 "+req.session.userId)
                     return res.redirect('/')
                 }else{
                     throw new Error() 

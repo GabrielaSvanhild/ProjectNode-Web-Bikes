@@ -2,10 +2,15 @@
         <div class="container-menu">
             <h3>Menu</h3>
             <hr> 
-            <p> Home </p>  
-            <p>Submit a Bike</p> 
-            <p>Sign In</p> 
-            <p>Sign Up</p> 
+            <a href="/">Home</a>
+        <% if(!loggedIn){ %>
+            
+            <a href="/signIn"> Sign In</a>
+        <a  href="/signUp"> Sign Up</a>
+        <% } else{%> 
+            <a  href="/submitBike/<%=userId%>">Submit a Bike</a>
+            <a  href="/logOut">Log Out</a>
+       <%}%>
  
         </div>
         <div class="container-categories">

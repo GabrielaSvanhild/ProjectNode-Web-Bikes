@@ -1,27 +1,107 @@
 <%- include('partials/head.ejs') %>
 
+
 <body>
         <%- include('partials/header.ejs')  %>
     <div class="hero">
 
         </div>
     <main>
-        
         <article>
-                <h2>Cafe Racer && Chopers</h2>
-            <% if(bikes.length >0){ %>
-                <%bikes.forEach(bike=>{%>
+                <% let bikes_cafeRacer=bikes.filter(bike=>bike.modelOfBike==="cafe_racer")%>
+            <h2>Cafe Racer</h2>
+           <%if(bikes_cafeRacer.length>0){%>
+                <%bikes_cafeRacer.forEach(bike=>{%>
+                    <%let heart1= bike.likes.includes(userId) ? "/assets/heart1.png" : "/assets/corazon_sin_relleno.png"%>
                     <div class="container-moto">
                         <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
                         <div class="container-text">
                             <div class="container-tittle-heart">
                                 <h3><%=bike.title%></h3>
-                                <img src="/assets/heart1.png" alt="likear">
+                                <%if(userId){%>
+                                    <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
+                                        <img src=<%=heart1%> alt="heart"/>
+                                    </a>
+                                <%}else{%>
+                                    <img src="/assets/corazon_sin_relleno.png" alt="likear">
+                                <%}%>                                       
+                            </div>
+                            <p><%=bike.description%> </p>
+                            <div class="comments-logo">   
+                                <%if(userId && userId.toString()===bike.userId.toString()){%>
+                                    <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
+                                    <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
+                                <%}%>
+                        </div>                   
+                    </div>
+                <%})%>
+            <%}%>
+        </article>
+        <article>
+            <% let bikes_choppers=bikes.filter(bike=>bike.modelOfBike==="choppers")%>
+            <h2>Choppers</h2>
+                <%if(bikes_choppers.length>0){%>
+                    <%bikes_choppers.forEach(bike=>{%>
+                        <%let heart2= bike.likes.includes(userId) ? "/assets/heart1.png" : "/assets/corazon_sin_relleno.png"%>
+                        <div class="container-moto">
+                                <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
+                                <div class="container-text">
+                                    <div class="container-tittle-heart">
+                                        <h3><%=bike.title%></h3>
+                                        <%if(userId){%>
+                                            <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
+                                                <img src=<%=heart2%> alt="heart"/>
+                                            </a>
+                                        <%}else{%>
+                                            <img src="/assets/corazon_sin_relleno.png" alt="likear">
+                                        <%}%>    
+                                     
+                                       
+                                    </div>
+                                    <p><%=bike.description%> </p>
+                                    <div class="comments-logo">
+        
+                                        <%if(userId && userId.toString()===bike.userId.toString()){%>
+                                       <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
+                                       <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
+                                       <%}%>
+                                    </div>                   
+                                </div>
+                            </div>
+
+                    <%})%>
+
+                <%}%>
+
+        </article>
+            
+        
+        <article>
+                <h2>Classics</h2>
+                <% let bikes_classics=bikes.filter(bike=>bike.modelOfBike==="classics")%>
+            <% if(bikes_classics.length >0){ %>
+                <%bikes_classics.forEach(bike=>{%>
+                    <%let heart3= bike.likes.includes(userId) ? "/assets/heart1.png" : "/assets/corazon_sin_relleno.png"%>
+                    <div class="container-moto">
+                        <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
+                        <div class="container-text">
+                            <div class="container-tittle-heart">
+                                <h3><%=bike.title%></h3>
+                                <%if(userId){%>
+                                    <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
+                                        <img src=<%=heart3%> alt="heart"/>
+                                    </a>
+                                <%}else{%>
+                                    <img src="/assets/corazon_sin_relleno.png" alt="likear">
+                                <%}%>                                   
                             </div>
                             <p><%=bike.description%> </p>
                             <div class="comments-logo">
-                               <a href="/deleteBike/<%=bike._id%>"><button>Delete</button> </a> 
-                               <a href="/editBike/<%=bike._id%>"><button>Edit</button> </a> 
+
+                                <%if(userId && userId.toString()===bike.userId.toString()){%>
+                               <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
+                               <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
+                               <%}%>
                             </div>                   
                         </div>
                     </div>
@@ -29,9 +109,11 @@
             
             <% } %>
         </article>
+      
 
     </main>
     <%- include('partials/footer.ejs') %>
+    
 </body>
 </html>
 

@@ -26,25 +26,80 @@ const bikesControllers ={
                 loggedIn : req.session.loggedIn,
                 userId: req.params._id,
                 error: e,
-                edit:false
+                edit:false,
             })
         }
     },
-    deleteBike:async (req,res)=>{
-        await Bikes.findOneAndDelete({_id:req.params._id})
-        res.redirect('/')
+    deleteBike:(req,res)=>{
+         Bikes.findOneAndDelete({_id:req.params._id})
+        .then(()=>res.redirect('/'))
+        .catch(()=>{
+            //poner alerta al usuario!!
+            res.redirect('/')
+        })
+        
     },
-    editBike: async (req,res)=>{
+    editBike: (req,res)=>{
         console.log( req.params)
-        let bike = await Bikes.findOne({_id:req.params._id})
-        res.render('submit', {
+         Bikes.findOne({_id:req.params._id})
+        .then((bike)=>{
+            res.render('submit', {
             title:"Submit a Bike",
             loggedIn : req.session.loggedIn,
             userId: req.session.userId,
             error: null,
-            edit: bike
+            edit: bike,
+            })
+        }) 
+        .catch(error=>{
+            console.log(error)
+            //alertita error
         })
-    }
+    },
+    like_dislike_bike:(req,res)=>{
+        console.log(req.query)
+        Bikes.findOne({_id:req.query.idBike})
+        .then((bike)=>{
+            if(bike.likes.includes(req.query.idUser)){
+                Bikes.findOneAndUpdate({_id:req.query.idBike},{$pull:{likes:req.query.idUser}})
+                .then(()=>{
+                    Bikes.find()
+                    .then((bikes)=>{
+                        res.render('index',{
+                            title: "Home",
+                            bikes,
+                            loggedIn : req.session.loggedIn,
+                            userId: req.session.userId,
+                            name: null || req.session.name,
+    
+                        })                       
+                    })
+                })
+            }else{
+                Bikes.findOneAndUpdate({_id:req.query.idBike},{$push:{likes:req.query.idUser}})
+                .then(()=>{
+                    Bikes.find()
+                    .then((bikes)=>{
+                        res.render('index',{
+                            title: "Home",
+                            bikes,
+                            loggedIn : req.session.loggedIn,
+                            userId: req.session.userId,
+                            name: null || req.session.name,
+    
+                        }) 
+                    })
+
+                })
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+            //errror
+        })
+
+    },
+
 }
 module.exports = bikesControllers
 

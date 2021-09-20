@@ -36,7 +36,7 @@ nav a{
     font-weight: 700;
     transition: 500ms;
 }
-a:hover{
+nav a:hover{
     color:#6d6b46; 
 }
 .active{
@@ -140,11 +140,11 @@ form{
     height: 9rem;
 
 }
-/* textarea {
+textarea {
     resize: none;
     width: 28%;
     height: 7rem;
-} */
+} 
 .container-text-submit{
     display: flex;
     flex-direction: column;
@@ -153,7 +153,7 @@ form{
 }
 .container-text-submit span{
     font-weight: 700;
-    color: bisque;
+    color: rgb(162, 125, 80);
 }
 .container-title-input{
  display: flex;
@@ -173,12 +173,20 @@ form{
 display: flex;
 gap: 1rem;
 }
-
-.boton{
-    width: 10vw;
+.container-send{
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+.boton{
+    width: 10vw;
     margin-top:1rem;
+    background-color: #105b30;
+    color: #ffffff;
+    border: none;
+
+    
 }
 /* Sign IN */
 
@@ -217,6 +225,7 @@ gap: 1rem;
     height: 3rem;
     width: 30%;
     border: none;
+    /* background-color: #105b30; */
     background-color: #466d57;
     color:white
 }
@@ -233,6 +242,18 @@ footer{
 }
 .container-menu, .container-social-media, .container-categories{
     width:20%;
+}
+.container-menu{
+    display: flex;
+    flex-direction: column;
+}
+.container-menu a{
+    text-decoration: none;
+    color: white;
+
+}
+.container-social-media hr{
+    margin-bottom: 0.2rem;
 }
 .iconos{
     

@@ -1,5 +1,7 @@
 <!-- EJS SIGNIFICA EMMBEBED JAVA SCRIPT -->
-<%- include('partials/head.ejs') %> <!-- ACA VA EL CODIGO JAVA SCRIPT si hubiese puesto la barra /partials, la busca en la raiz en el disco "c" -->
+<%- include('partials/head.ejs') %> 
+
+
 <body>
     <%- include('partials/header.ejs') %>
     <div class="hero-submit">
@@ -15,20 +17,31 @@
             </div>
             <hr>
             <form action="/submitBike/<%=userId%>" method="POST">
-                    <div class="container-data-1">
-                            <div class="container-title-input"> 
-                                <label for="name">Your Name</label>
-                                <input  type="text" id="name" name="name" required  value="<%= edit ? edit.name : null%>"/>
-                            </div>
-                            <div class="container-title-input">
-                                <label for="email">Email</label>
-                                <input  type="email" id="email" name="email" required value="<%= edit ? edit.email : null%>"/>
-                            </div>                     
-                    </div>
                     <div class="container-data-2">
                             <div class="container-title-input">
-                                <label for="modelOfBike">Type / Model of Bike </label>
-                                <input  type="text" id="modelOfBike" name="modelOfBike" required value="<%= edit ? edit.modelOfBike : null%>"/>
+                                <p>Type / Model of Bike</p>
+                                
+                                <select id="selectModels" name="modelOfBike" onclick="showSelected('<%=edit.modelOfBike%>')"> 
+                                    <%if(edit&&edit.modelOfBike==="cafe_racer"){%>                            
+                                        <option id="cafe_racer" value="cafe_racer">Cafe Racer</option>
+                                        <option id="choppers" value="choppers">Choppers</option>
+                                        <option id="classics" value="classics">Classics</option>
+                                    <%}else if(edit&&edit.modelOfBike==="choppers"){%>
+                                        <option id="choppers" value="choppers">Choppers</option>
+                                        <option id="cafe_racer" value="cafe_racer">Cafe Racer</option>
+                                        <option id="classics" value="classics">Classics</option>
+                                    <%}else if(edit&&edit.modelOfBike==="classics"){%>
+                                        <option id="classics" value="classics">Classics</option>
+                                        <option id="choppers" value="choppers">Choppers</option>
+                                        <option id="cafe_racer" value="cafe_racer">Cafe Racer</option>
+                                    <%}else{%>
+                                        <option id="cafe_racer" value="cafe_racer">Cafe Racer</option>
+                                        <option id="choppers" value="choppers">Choppers</option>
+                                        <option id="classics" value="classics">Classics</option>
+                                    <%}%>
+                                </select>
+                               <!--  <label for="modelOfBike">Type / Model of Bike </label>
+                                <input  type="text" id="modelOfBike" name="modelOfBike" required value="<%= edit ? edit.modelOfBike : null%>"/> -->
                             </div>
                             <div class="container-title-input">
                                     <label for="urlBike">Image</label>
@@ -46,12 +59,19 @@
                         </div>
                     </div>
                     <input type="hidden" name="_id" value="<%=edit ? edit._id  : null%>">
-                    <input class="boton" type="submit" value="Submit" />
+                 <div class="container-send"> <input class="boton" type="submit" value="Submit" /></div>
             </form>
-            
         </article>
     </main>
+    <script>
+       console.log("caca") 
+        if(edit){
+            showSelected(edit.modelOfBike)
+        }
+        function showSelected(model) {
+            let option= document.getElementById(model)
+            option.selected=true
+        }
+    </script>
     <%- include('partials/footer.ejs') %> 
- <!--    <script src="https://kit.fontawesome.com/f119dc4da4.js" crossorigin="anonymous"></script> -->
-</body>
-</html>
+   <!--  <option value="<%= edit ? edit.modelOfBike : null%>"> <%=edit ? edit.modelOfBike : "Select your model"%></option>> -->

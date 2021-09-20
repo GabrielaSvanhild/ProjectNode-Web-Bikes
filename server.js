@@ -4,6 +4,8 @@ const express = require('express')
 const mongo = require('connect-mongodb-session')(session)
  require('dotenv').config()
  require('./config/database')
+ const routeControllers = require('./controllers/routeControllers')
+
  const myStore = new mongo({
 	uri: process.env.MONGODB,
 	collection: "sessions",
@@ -20,7 +22,8 @@ app.use(session({
 	saveUninitialized: false,
 	store: myStore,
 }))
-app.use('/', router)
+app.use('/', routeControllers.control_url, router)
+
 
 
 app.listen(4000, () => console.log("Server listening on port 4000"))
