@@ -8,6 +8,9 @@ const userControllers=require('../controllers/userControllers')
 router.route('/')
 .get(pagesControllers.home)
 
+router.route('/prueba')
+.get(pagesControllers.prueba)
+
 router.route('/signIn')
 .get(pagesControllers.signIn)
 .post(userControllers.signIn)
@@ -33,4 +36,6 @@ router.route('/logOut')
 router.route('/likes')
 .get(bikesControllers.like_dislike_bike)
 
+router.route('/like/:idUser/:idBike')
+.put(bikesControllers.like_unlike_bike)
 module.exports = router

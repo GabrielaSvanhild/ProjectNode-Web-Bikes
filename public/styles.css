@@ -158,7 +158,11 @@ justify-content: space-between;
 }
 /* SUBMIT */
 form input, .container-data-2 select{
-    height: 2.5rem;
+    height: 2rem;
+    padding: 0.5rem
+}
+.container-data-2 select{
+    padding: 0;
 }
 form{
     display: flex;
@@ -168,7 +172,8 @@ form{
 
 }
 .input-description{
-    height: 9rem;
+    height: 8.5rem;
+    padding: 0.5rem
 
 }
 textarea {
@@ -249,11 +254,13 @@ gap: 1rem;
 
 }
 .inputSign{
-    height: 3rem;
+    height: 2.5rem;
     width: 50%;
+    padding: 0.5rem
 }
 .boton-submit{
-    height: 3rem;
+    height: 2.5rem;
+    padding: 0.5rem;
     width: 30%;
     border: none;
     /* background-color: #105b30; */

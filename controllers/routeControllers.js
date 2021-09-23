@@ -10,7 +10,7 @@ const routeControllers = {
             next()
         }
         else{
-            let valid_url = ["/", "/signIn", "/signUp", "/logOut"]
+            let valid_url = ["/", "/signIn", "/signUp", "/logOut","/prueba"]
             valid_url.includes(req.url)
             ? next()
             : res.redirect('/')

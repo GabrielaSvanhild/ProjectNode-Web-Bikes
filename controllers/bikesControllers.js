@@ -40,7 +40,7 @@ const bikesControllers ={
         
     },
     editBike: (req,res)=>{
-        console.log( req.params)
+
          Bikes.findOne({_id:req.params._id})
         .then((bike)=>{
             res.render('submit', {
@@ -57,7 +57,6 @@ const bikesControllers ={
         })
     },
     like_dislike_bike:(req,res)=>{
-        console.log(req.query)
         Bikes.findOne({_id:req.query.idBike})
         .then((bike)=>{
             if(bike.likes.includes(req.query.idUser)){
@@ -99,6 +98,32 @@ const bikesControllers ={
         })
 
     },
+    like_unlike_bike:(req,res)=>{
+        Bikes.findOne({_id:req.params.idBike})
+        .then((bike)=>{
+            if(bike.likes.includes(req.params.idUser)){
+                Bikes.findOneAndUpdate({_id:req.params.idBike},{$pull:{likes:req.params.idUser}})
+                .then((bikeUnlike)=>{
+                    console.log(bike)
+                    res.json({success:true,like:false, numberLikes:bikeUnlike.likes.length})
+                    
+                })
+            }else{
+                Bikes.findOneAndUpdate({_id:req.params.idBike},{$push:{likes:req.params.idUser}})
+                .then((bikeLike)=>{
+                   
+                    res.json({success:true,like:true, numberLikes:bikeLike.likes.length})
+                  
+
+                })
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+            //errror
+        })
+       
+    }
 
 }
 module.exports = bikesControllers
