@@ -1,9 +1,13 @@
 <header>
-    <img class="logo" src="/assets/logo.png" alt="">
+    <div class="container-logo-welcome">
+        <img class="logo" src="/assets/logo.png" alt="">
+        <%let name_user= name ? name : "Biker"%>
+        <p> <%=title.includes("Home")  ? "Welcome "+name_user+"!" : null%>  </p>
+    </div>
+    
     <nav>
         <a class="<%= title.includes("Home") && "active" %>" href="/">Home</a>
-        <% if(!loggedIn){ %>
-            
+        <% if(!loggedIn){ %>           
             <a  class="<%= title.includes("In") && "active" %>" href="/signIn"> Sign In</a>
         <a  class="<%= title.includes("Up") && "active"%>"  href="/signUp"> Sign Up</a>
         <% } else{%> 

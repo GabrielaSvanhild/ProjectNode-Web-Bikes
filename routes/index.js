@@ -13,7 +13,7 @@ router.route('/signIn')
 .post(userControllers.signIn)
 
 
-router.route('/submitBike/:_id')
+router.route('/submitBike/:id')
 .get(pagesControllers.submitBike)
 .post(bikesControllers.create_new_bike)
 
@@ -21,16 +21,16 @@ router.route('/signUp')
 .get(pagesControllers.signUp)
 .post(userControllers.signUp)
 
-router.route('/deleteBike/:_id')
+router.route('/deleteBike/:id')
 .get(bikesControllers.deleteBike)
 
-router.route('/editBike/:_id')
-.get(bikesControllers.editBike)
+router.route('/editBike/:id')
+.get(bikesControllers.editBike) 
 
 router.route('/logOut')
 .get(userControllers.logOut)
 
-router.route('/likes')
-.get(bikesControllers.like_dislike_bike)
+/* router.route('/likes')
+.get(bikesControllers.like_dislike_bike)  */
 
 module.exports = router

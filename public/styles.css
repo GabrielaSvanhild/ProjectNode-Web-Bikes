@@ -21,6 +21,12 @@ header{
     padding: 1rem;
 
 }
+.container-logo-welcome{
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+    align-items: center;
+}
 nav{
     width: 50%; 
    /*  background-color: teal; */

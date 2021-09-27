@@ -1,4 +1,35 @@
-const mongoose = require('mongoose')
+const Sequelize = require('sequelize')
+const db = require('../config/db')
+
+const Bike= db.define('bike', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    description:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    modelOfBike:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    urlBike:{
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+})
+
+module.exports = Bike
+
+
+/* const mongoose = require('mongoose')
 
 const bikeSchema = new mongoose.Schema({
     title: {type: String, required: true}, 
@@ -13,4 +44,4 @@ const bikeSchema = new mongoose.Schema({
 
 const Bikes = mongoose.model('bike', bikeSchema)
 
-module.exports = Bikes
+module.exports = Bikes */

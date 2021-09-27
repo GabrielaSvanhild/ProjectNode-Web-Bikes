@@ -3,19 +3,17 @@ const Bikes = require('../models/Bike')
 
 const bikesControllers ={
     create_new_bike: async(req,res)=>{
-        const { title, description,modelOfBike,email,name,urlBike,_id} = req.body
+        const { title, description,modelOfBike,email,name,urlBike,id} = req.body
         let newBike; 
-        if(!_id){
-            newBike = new Bikes({title, description,modelOfBike,email,name,urlBike,userId:req.params._id})
+        if(!id){
+            newBike = new Bikes({title, description,modelOfBike,email,name,urlBike,userId:req.params.id})
         }else{
-            newBike = await Bikes.findOne({_id})
+            newBike = await Bikes.findOne({where:{id}})
             newBike.title=title 
             newBike.description=description
             newBike.modelOfBike=modelOfBike
-            newBike.email=email
-            newBike.name=name
             newBike.urlBike=urlBike
-            newBike.userId=req.params._id
+            newBike.userId=req.params.id
         }   
         try {
             await newBike.save()
@@ -24,81 +22,56 @@ const bikesControllers ={
             res.render('submit', {
                 title:"Submit a Bike",
                 loggedIn : req.session.loggedIn,
-                userId: req.params._id,
+                userId: req.params.id,
                 error: e,
                 edit:false,
+                name: null || req.session.name
             })
         }
     },
-    deleteBike:(req,res)=>{
-         Bikes.findOneAndDelete({_id:req.params._id})
-        .then(()=>res.redirect('/'))
-        .catch(()=>{
-            //poner alerta al usuario!!
+    deleteBike:async(req,res)=>{
+       try{
+           let bikeDeleted = await Bikes.findByPk(req.params.id)
+            await bikeDeleted.destroy()
             res.redirect('/')
-        })
-        
-    },
-    editBike: (req,res)=>{
-        console.log( req.params)
-         Bikes.findOne({_id:req.params._id})
-        .then((bike)=>{
-            res.render('submit', {
-            title:"Submit a Bike",
-            loggedIn : req.session.loggedIn,
-            userId: req.session.userId,
-            error: null,
-            edit: bike,
+       }catch(e){
+            console.log(e)
+            res.render('index',{
+                title: "Home",
+                bikes,
+                loggedIn : req.session.loggedIn,
+                userId: req.session.userId,
+                name: null || req.session.name,
+                error:"Technical problems"
             })
-        }) 
-        .catch(error=>{
-            console.log(error)
-            //alertita error
-        })
-    },
-    like_dislike_bike:(req,res)=>{
-        console.log(req.query)
-        Bikes.findOne({_id:req.query.idBike})
-        .then((bike)=>{
-            if(bike.likes.includes(req.query.idUser)){
-                Bikes.findOneAndUpdate({_id:req.query.idBike},{$pull:{likes:req.query.idUser}})
-                .then(()=>{
-                    Bikes.find()
-                    .then((bikes)=>{
-                        res.render('index',{
-                            title: "Home",
-                            bikes,
-                            loggedIn : req.session.loggedIn,
-                            userId: req.session.userId,
-                            name: null || req.session.name,
-    
-                        })                       
-                    })
-                })
-            }else{
-                Bikes.findOneAndUpdate({_id:req.query.idBike},{$push:{likes:req.query.idUser}})
-                .then(()=>{
-                    Bikes.find()
-                    .then((bikes)=>{
-                        res.render('index',{
-                            title: "Home",
-                            bikes,
-                            loggedIn : req.session.loggedIn,
-                            userId: req.session.userId,
-                            name: null || req.session.name,
-    
-                        }) 
-                    })
+       }     
+    }, 
 
-                })
-            }
-        })
-        .catch((error)=>{
-            console.log(error)
-            //errror
-        })
+    editBike:async(req,res)=>{
+        try{
+            let bikeToEdit = await Bikes.findByPk(req.params.id)
+            res.render('submit', {
+                title:"Submit a Bike",
+                loggedIn : req.session.loggedIn,
+                userId: req.session.userId,
+                error: null,
+                edit: bikeToEdit,
+                name: null || req.session.name
+            })  
 
+        }catch(e){
+            console.log(e)
+            res.render('index',{
+                title: "Home",
+                bikes,
+                loggedIn : req.session.loggedIn,
+                userId: req.session.userId,
+                name: null || req.session.name,
+                error:"Technical problems"
+            })
+        }          
     },
+  
 
 }
 module.exports = bikesControllers

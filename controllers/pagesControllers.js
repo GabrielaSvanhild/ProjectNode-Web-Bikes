@@ -2,14 +2,14 @@ const Bikes = require('../models/Bike')
 
 const pagesControllers = {
     home: async(req, res) => {
-    const bikes= await Bikes.find()
-    console.log(req.session.userId)
+    const bikes= await Bikes.findAll()
         res.render('index',{
             title: "Home",
             bikes,
             loggedIn : req.session.loggedIn,
             userId: req.session.userId,
-			name: null || req.session.name
+            name: null || req.session.name,
+            error:null
         })
     },
     signIn: (req, res) => {
@@ -21,7 +21,8 @@ const pagesControllers = {
                 title: "Sign In",
                 loggedIn : req.session.loggedIn,
                 userId: req.session.userId,
-                error:null
+                error:null,
+                name: null || req.session.name
             })
         }
         
@@ -35,7 +36,8 @@ const pagesControllers = {
                 title: "Sign Up",
                 loggedIn : req.session.loggedIn,
                 userId: req.session.userId,
-                error:null
+                error:null,
+                name: null || req.session.name
             })
         }
         
@@ -48,6 +50,7 @@ const pagesControllers = {
                 error:null,
                 edit:false,
                 userId: req.session.userId,
+                name: null || req.session.name
             })    
         }
     res.redirect('/')

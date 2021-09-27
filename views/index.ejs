@@ -7,37 +7,26 @@
 
         </div>
     <main>  
+        
         <article>
                 <% let bikes_cafeRacer=bikes.filter(bike=>bike.modelOfBike==="cafe_racer")%>
             <h2>Cafe Racer</h2>
             <%if(bikes_cafeRacer.length>0){%>
-                <%bikes_cafeRacer.forEach(bike=>{%>
-                    <%let heart1= bike.likes.includes(userId) ? "/assets/heart1.png" : "/assets/corazon_sin_relleno.png"%>
+                <%bikes_cafeRacer.forEach(bike=>{%>                   
                     <div class="container-moto">
                             <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
                             <div class="container-text">
                                 <div class="container-tittle-heart">
-                                    <h3><%=bike.title%></h3>
-                                    <div class="container-like">
-                                        <%if(userId){%>
-                                            <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
-                                                <img src=<%=heart1%> alt="heart"/>
-                                            </a>
-                                            
-                                        <%}else{%>
-                                            <img onclick="alert2()"  src="/assets/corazon_sin_relleno.png" alt="likear">
-                                        <%}%>   
-                                        <p><%=bike.likes.length%></p> 
-
-                                    </div>
-                                                                           
+                                    <h3><%=bike.title%></h3>                                                                   
                                 </div>
                                 <p><%=bike.description%> </p>
-                                <div class="comments-logo">
-    
+                                <%if(error){%>
+                                    <h3><%=error%></h3>
+                                <%}%>
+                                <div class="comments-logo">                                    
                                     <%if(userId && userId.toString()===bike.userId.toString()){%>
-                                   <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
-                                   <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
+                                   <a href="/deleteBike/<%=bike.id%>"><button class="boton_delete">Delete</button> </a> 
+                                   <a href="/editBike/<%=bike.id%>"><button class="boton_edit">Edit</button> </a> 
                                    <%}%>
                                 </div>                   
                             </div>
@@ -50,32 +39,21 @@
             <% let bikes_choppers=bikes.filter(bike=>bike.modelOfBike==="choppers")%>
             <h2>Choppers</h2>
                 <%if(bikes_choppers.length>0){%>
-                    <%bikes_choppers.forEach(bike=>{%>
-                        <%let heart2= bike.likes.includes(userId) ? "/assets/heart1.png" : "/assets/corazon_sin_relleno.png"%>
+                    <%bikes_choppers.forEach(bike=>{%>                       
                         <div class="container-moto">
                                 <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
                                 <div class="container-text">
                                     <div class="container-tittle-heart">
-                                        <h3><%=bike.title%></h3>
-                                        <div class="container-like">
-                                            <%if(userId){%>
-                                                <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
-                                                    <img src=<%=heart2%> alt="heart"/>   
-                                                </a>
-                                            <%}else{%>
-                                                <img onclick="alert2()" src="/assets/corazon_sin_relleno.png" alt="likear">
-                                            <%}%>  
-                                            <p><%=bike.likes.length%></p>  
-
-                                        </div>
-                                                                               
+                                        <h3><%=bike.title%></h3>                                                                                                                   
                                     </div>
                                     <p><%=bike.description%> </p>
-                                    <div class="comments-logo">
-        
+                                    <%if(error){%>
+                                        <h3><%=error%></h3>
+                                    <%}%>
+                                    <div class="comments-logo">       
                                         <%if(userId && userId.toString()===bike.userId.toString()){%>
-                                       <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
-                                       <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
+                                       <a href="/deleteBike/<%=bike.id%>"><button class="boton_delete">Delete</button> </a> 
+                                       <a href="/editBike/<%=bike.id%>"><button class="boton_edit">Edit</button> </a> 
                                        <%}%>
                                     </div>                   
                                 </div>
@@ -89,185 +67,30 @@
                 <h2>Classics</h2>
                 <% let bikes_classics=bikes.filter(bike=>bike.modelOfBike==="classics")%>
             <% if(bikes_classics.length >0){ %>
-                <%bikes_classics.forEach(bike=>{%>
-                    <%let heart3= bike.likes.includes(userId) ? "/assets/heart1.png" : "/assets/corazon_sin_relleno.png"%>
+                <%bikes_classics.forEach(bike=>{%>                   
                     <div class="container-moto">
                         <img class="imgMoto" src=<%=bike.urlBike%> alt="moto1"/>
                         <div class="container-text">
                             <div class="container-tittle-heart">
-                                <h3><%=bike.title%></h3>
-                                <div class="container-like">
-                                        <%if(userId){%>
-                                            <a href="/likes?idUser=<%=userId%>&idBike=<%=bike._id%>">
-                                                <img src=<%=heart3%> alt="heart"/>
-                                            </a>                     
-                                        <%}else{%>
-                                            <img onclick="alert2()" src="/assets/corazon_sin_relleno.png" alt="likear">
-                                        <%}%>  
-                                        <p><%=bike.likes.length%></p>  
-
-                                </div>
-                                                               
+                                <h3><%=bike.title%></h3>                                                                                             
                             </div>
                             <p><%=bike.description%> </p>
+                            <%if(error){%>
+                                <h3><%=error%></h3>
+                            <%}%>
                             <div class="comments-logo">
-
                                 <%if(userId && userId.toString()===bike.userId.toString()){%>
-                               <a href="/deleteBike/<%=bike._id%>"><button class="boton_delete">Delete</button> </a> 
-                               <a href="/editBike/<%=bike._id%>"><button class="boton_edit">Edit</button> </a> 
+                               <a href="/deleteBike/<%=bike.id%>"><button class="boton_delete">Delete</button> </a> 
+                               <a href="/editBike/<%=bike.id%>"><button class="boton_edit">Edit</button> </a> 
                                <%}%>
                             </div>                   
                         </div>
                     </div>
-                <%})%>
-            
+                <%})%>           
             <% } %>
         </article>
       
 
     </main>
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <script defer>
-        function alert2(){
-            alertify.error("You have to log in")
-           
-        }      
-
-    </script>
     <%- include('partials/footer.ejs') %>
-    
-
-
-
-
-
-
-
-<!-- 
-<article>
-        <h2>Cafe Racer</h2>
-        <div class="container-moto">
-            <img class="imgMoto" src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2021/09/DSC02028-2.jpg" alt="moto1"/>
-            <div class="container-text">
-                <div class="container-tittle-heart">
-                        <h3>HIGHLY CAFFEINATED: 1974 Honda CB200 Café Racer.</h3>
-                        <img src="/assets/heart1.png" alt="likear">
-
-                </div>
-                <p>For more than six decades the Honda CB series has been doing it all, from small capacity commuter bikes to mid-sized tourers and badged with a RR, ripping up race tracks and taking home trophies. It’s hard to think of a more diverse range of bikes offered under the one badge, with models featuring single cylinders through to six.</p>
-                <div class="comments-logo">
-
-                        <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                </div>                   
-            </div>
-        </div>
-        <div class="container-moto">
-                <img class="imgMoto" src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2021/09/2021_BigBob_001.jpg" alt="moto1"/>
-                <div class="container-text">
-                    <div class="container-tittle-heart">
-                            <h3>BIG BOY: Triumph Rocket ‘Big Bob’ by Mr Martini.</h3>
-                            <img src="/assets/heart1.png" alt="likear">
-
-                    </div>
-                    <p>If ever there was a production bike that truly put the motor into motorcycle it was the original Triumph Rocket III. Rumours swirled during the development stage of the bike in the early noughties of a possible six-cylinder or maybe a big four. But the modern incarnation of Triumph had built their success on triples, so they turned one the long way round and gave it a whopping 2,294cc capacity, for the biggest engine ever fitted at the time to a genuine production motorcycle.</p>
-                    <div class="comments-logo">
-
-                            <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                    </div>                   
-                </div>
-            </div>
-            <div class="container-moto">
-                    <img class="imgMoto" src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2021/07/BMW-cafe-racer-hero.jpg" alt="moto1"/>
-                    <div class="container-text">
-                        <div class="container-tittle-heart">
-                                <h3>DARK ARTS: BMW R100/7 by Dark Shadow Garage.</h3>
-                                <img src="/assets/heart1.png" alt="likear">
-    
-                        </div>
-                        <p>When you’ve been immersed in a subculture for what feels like a lifetime, you quickly forget that by its very nature few people on the outside will ever really understand what it’s all about. But nothing reminds you more vividly as to why you’re in so deep than to witness the joy and overt passion of a newcomer. </p>
-                        <div class="comments-logo">
-    
-                                <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                        </div>                   
-                    </div>
-                </div>
-                <div class="container-moto">
-                        <img class="imgMoto" src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2021/08/H1DEUS_JAPAN_BERETTA_Moto_Guzzi_Blog_1600x.jpg" alt="moto1"/>
-                        <div class="container-text">
-                            <div class="container-tittle-heart">
-                                    <h3>FULLY LOADED: Moto Guzzi V50 MK2 ‘BERETTA’ By Deus.
-                                        </h3>
-                                    <img src="/assets/heart1.png" alt="likear">
-        
-                            </div>
-                            <p>Founded in 1921 in Genoa, Italy though headquartered out of Mandello del Lario, Moto Guzzi is one of the longest surviving Italian motorcycle companies of all time, having just celebrated its centenary earlier this year. And to commemorate the occasion, Deus Ex Machina is now honoring the Mandello marque’s 100th anniversary with a special one-off cafe racer from the lifestyle brand’s Japan location in Tokyo’s Asakusa district. </p>
-                            <div class="comments-logo">
-        
-                                    <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                            </div>                   
-                        </div>
-                    </div>
-    </article>
-    <article>
-        <h2>Choppers</h2>
-        <div class="container-moto">
-            <img class="imgMoto" src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2021/07/Copy-of-edited-2329-2.jpg" alt="moto1"/>
-            <div class="container-text">
-                <div class="container-tittle-heart">
-                        <h3>LONG & LOW: Honda Varadero by JM Customs.</h3>
-                        <img src="/assets/heart1.png" alt="likear">
-
-                </div>
-                <p>When you hear the words ‘custom chopper,’ the bulky Honda Varadero isn’t usually the first thing that comes to mind. The Varadero was named after the popular holiday resort area in Cuba, and some might say the Honda designers were on vacation when they designed the uninspiring adventure bike. However, it did have one saving grace: a bulletproof V-twin Firestorm 1000cc engine. </p>
-                <div class="comments-logo">
-
-                        <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                </div>                   
-            </div>
-        </div>
-        <div class="container-moto">
-                <img class="imgMoto"src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2021/04/2020_Chief_.jpg" alt="moto1"/>
-                <div class="container-text">
-                    <div class="container-tittle-heart">
-                            <h3>FOUR MEN, THREE CHIEFS: Indian Motorcycle launches Chief Custom Build Program.</h3>
-                            <img src="/assets/heart1.png" alt="likear">
-
-                    </div>
-                    <p>From board track racing to the post-war bobbers, the American V-Twin was at the heart of the custom bike world for decades. But truth be told, that influence has been drastically diminished in recent times, and comments sections of websites like this and the letters to the editor of every bike magazine have been filled with the same response. “Why won’t the manufacturers listen to what we want!”</p>
-                    <div class="comments-logo">
-
-                            <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                    </div>                   
-                </div>
-            </div>
-            <div class="container-moto">
-                    <img class="imgMoto" src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2019/12/E0A3217.jpg" alt="moto1"/>
-                    <div class="container-text">
-                        <div class="container-tittle-heart">
-                                <h3>GOOD WORK AIN’T CHEAP: Harley-Davidson Iron 883 by Gasoline Motor Co.</h3>
-                                <img src="/assets/heart1.png" alt="likear">
-    
-                        </div>
-                        <p>Nothing goes better with the image of Harley-Davidsons than hard liquor and tattoos. So when one of Gasoline Motor Co.’s best clients for commissioned bike builds – William Grant and Sons for the famous Sailor Jerry Spiced Rum – they couldn’t wait to get their hands dirty again. The ‘SJ2’ is the second collaboration build between the two companies. </p>
-                        <div class="comments-logo">
-    
-                                <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                        </div>                   
-                    </div>
-                </div>
-                <div class="container-moto">
-                        <img class="imgMoto" src="https://mk0pipeburnprodjod3p.kinstacdn.com/wp-content/uploads/2019/11/Mike-Kawasaki-Black-30-10-1911149-Sides-retouched.jpg" alt="moto1"/>
-                        <div class="container-text">
-                            <div class="container-tittle-heart">
-                                    <h3>BACK IN BLACK: 2012 Kawasaki W800 by Mike Andrews</h3>
-                                    <img src="/assets/heart1.png" alt="likear">
-        
-                            </div>
-                            <p> The last time we caught up with Kiwi Mike Andrews he’d finished building his epic Honda Muscle Racer and after its Pipeburn feature he was looking forward to clocking up the miles before retiring the bike to his living room. But life has a way of turning the rudder for us and sending us on a path totally planned.  </p>
-                            <div class="comments-logo">
-        
-                                    <img class="comments-logo"src="/assets/comments.png" alt="commentsLogo">
-                            </div>                   
-                        </div>
-                    </div>
-    </article> -->
+   
