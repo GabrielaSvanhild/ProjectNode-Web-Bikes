@@ -1,8 +1,7 @@
 # Customized Bikes Web 🏍️
 
 Esta web es un proyecto realizado en una semana en el transcurso del Bootcamp en MindHub. La interfaz esta hecha en Inglés. Los usuarios pueden crearse una cuenta y subir sus posteos de motos.
-Cada usuario es capaz de editar y borrar dicho posteo. En este proyecto, se realizó otra rama llamada sequelize en la cual se reemplaza la base de datos utilizada por MySQL y se adecúa el código a la misma.
-
+Cada usuario es capaz de editar y borrar dicho posteo. En este proyecto, se realizó otra rama llamada sequelize en la cual se reemplaza la base de datos utilizada por MySQL y se adecúa el código a la misma. Para poder ver el trabajo final realizado puedes ingresar a:https://bikes-mh.herokuapp.com/
 
 ## Comenzando! 🚀
 
